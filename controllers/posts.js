@@ -27,12 +27,12 @@ function index(req, res) {
         }
     });
    
-};
+}
 
 function show(req, res){
     const post = findOrFail(req, res);
     res.json(post);
-};
+}
 
 function create(req, res){
     res.format({
@@ -46,7 +46,22 @@ function create(req, res){
     res.status(406).send(`Wrong request`);
 }
 
+function download(req, res){
+    const post = findOrFail(req, res);
 
+    const filePath = path.resolve(
+        __dirname,
+        "..",
+        "public",
+        "assets",
+        "imgs",
+        "posts",
+        post.image
+      );
+
+    res.download(filePath);
+    // res.status(406).send(`Wrong request`);
+}
 
 
 function findOrFail(req, res) {
@@ -68,5 +83,6 @@ function findOrFail(req, res) {
 module.exports = {
 index,
 show,
-create
+create,
+download
 }
