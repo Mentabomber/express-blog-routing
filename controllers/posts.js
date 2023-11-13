@@ -31,6 +31,9 @@ function index(req, res) {
 
 function show(req, res){
     const post = findOrFail(req, res);
+    console.log(post);
+    post["image_url"] =  "http://localhost:3001/"+"assets/" + "imgs/" + "posts/" + post.image;
+    // post["image_download_url"] = 
     res.json(post);
 }
 
