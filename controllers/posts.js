@@ -40,18 +40,10 @@ function create(req, res){
             const html = [`
                 <h1>Creazione nuovo post</h1>
             `];
-            html.push("<ul>");
-            for( const post of postsList){
-                html.push(`<li>
-                    <h3>${post.title}</h3><br><br>`
-                );
-                html.push("</li>");
-            }
-            html.push("<ul>");
             res.send(html.join(""));
         },
     })
-    res.send("Errore 406");
+    res.status(406).send(`Wrong request`);
 }
 
 
