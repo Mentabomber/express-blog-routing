@@ -12,7 +12,8 @@ function index(req, res) {
             html.push("<ul>");
             for( const post of postsList){
                 html.push(`<li>
-                    <h3>${post.title}</h3><br><br>`
+                    <a href="/posts/${post.slug}">${post.title}</a><br><br>`
+                    
                 );
                 html.push("</li>");
             }
